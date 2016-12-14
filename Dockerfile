@@ -17,4 +17,4 @@ RUN set -ex \
   && bundle install --path vendor/bundle \
   && apk del .ruby-bundle-deps
 
-CMD bundle exec ruby app.rb -s Puma -e production
+CMD bundle exec ruby app.rb -p 80 -s Puma -e production
