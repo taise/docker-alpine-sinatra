@@ -1,4 +1,4 @@
-FROM ruby:2.3-alpine
+FROM ruby:2.6.3-alpine
 
 MAINTAINER taise <taise515@gmail.com>
 
@@ -8,6 +8,8 @@ ENV APP_ROOT /app
 RUN mkdir $APP_ROOT
 WORKDIR $APP_ROOT
 COPY . $APP_ROOT
+RUN gem install bundler -v 2.0.1 --no-doc && \
+    gem cleanup bundler
 RUN set -ex \
   && apk --update add --no-cache --virtual .ruby-bundle-deps \
             ruby-dev \
